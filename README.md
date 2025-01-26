@@ -4,9 +4,9 @@ This is a beautifully designed **Wallpaper App** built using Flutter. It integra
 
 ## 📲 APK Download
 
-You can download the latest version of the app by clicking the link below:
+You can download the apk by clicking the link below:
 
-[Download APK](https://your-apk-download-link.com)
+[Download APK](https://github.com/Muneef-Nk/wallpaper-app/blob/main/app-release.apk)
 
 ---
 
@@ -15,14 +15,6 @@ You can download the latest version of the app by clicking the link below:
 - **Pinterest-Style Grid**: A visually appealing, responsive grid layout for wallpapers.
 - **Download High-Resolution Images**: Save your favorite wallpapers directly to your device.
 - **Lazy Loading**: Seamless scrolling experience with lazy-loaded images.
-
----
-
-## 🔧 How to Install the APK
-1. Click on the **[Download APK](https://your-apk-download-link.com)** link.
-2. Transfer the downloaded APK to your Android device if downloaded on a PC.
-3. Enable "Install from unknown sources" in your device settings.
-4. Tap on the APK file to install it.
 
 ---
 
