@@ -35,6 +35,14 @@ class _HomeViewState extends State<HomeView>
   void initState() {
     super.initState();
     _tabController = TabController(length: categories.length, vsync: this);
+
+    _tabController.addListener(() {
+      if (_tabController.indexIsChanging == false) {
+        Provider.of<WallpaperController>(context, listen: false).fetchPhotos(
+            category: categories[_tabController.index], reset: true);
+      }
+    });
+
     _scrollController.addListener(_scrollListener);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Provider.of<WallpaperController>(context, listen: false).fetchPhotos();
@@ -68,7 +76,7 @@ class _HomeViewState extends State<HomeView>
         elevation: 1,
         surfaceTintColor: Colors.white,
         title: const Text(
-          '4k Wallpapers',
+          'Wallpapers',
           style: TextStyle(
             color: Colors.purple,
             fontWeight: FontWeight.bold,
@@ -186,7 +194,7 @@ class _HomeViewState extends State<HomeView>
                 bottom: 0,
                 child: InkWell(
                   onTap: () {
-                    provider.downloadImage(photo.url, context);
+                    provider.downloadImage(photo.src.original, context);
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),

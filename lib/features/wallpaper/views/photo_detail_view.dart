@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:photo_view/photo_view.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:wallpaper_app/features/wallpaper/controller/photo_controller.dart';
@@ -24,10 +25,12 @@ class _PhotoDetailViewState extends State<PhotoDetailView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+          backgroundColor: Colors.white,
           centerTitle: true,
           title: const Text(
-            '4k Wallpapers',
+            'Wallpapers',
             style: TextStyle(
               color: Colors.purple,
               fontWeight: FontWeight.bold,
@@ -42,13 +45,21 @@ class _PhotoDetailViewState extends State<PhotoDetailView> {
             padding: const EdgeInsets.all(15),
             child: Column(
               children: [
-                Expanded(child: Image.network(provider.photo?.src.large ?? '')),
+                Expanded(
+                  child: PhotoView(
+                    backgroundDecoration: BoxDecoration(color: Colors.white),
+                    imageProvider:
+                        NetworkImage(provider.photo?.src.large ?? ''),
+                    minScale: PhotoViewComputedScale.contained,
+                    maxScale: PhotoViewComputedScale.covered,
+                  ),
+                ),
                 SizedBox(height: 20),
                 InkWell(
                   borderRadius: BorderRadius.circular(10),
                   onTap: () {
                     provider.downloadImage(
-                      provider.photo?.url.toString() ?? '',
+                      provider.photo?.src.original ?? '',
                       context,
                     );
                   },
@@ -63,7 +74,7 @@ class _PhotoDetailViewState extends State<PhotoDetailView> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "Download 4K",
+                          "Download",
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
